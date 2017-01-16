@@ -1,0 +1,72 @@
+<template name="UploadCV">
+  {{#with currentUpload}}
+    Envoi du fichier <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+    <input id="fileInput" type="file" />
+    <p><small>Select a <code>pdf</code> file </small></p>
+  {{/with}}
+</template>
+
+<template name="UploadedFiles">
+    <h2>{{uploadedFiles.count}} uploaded</h2>
+  {{#if uploadedFiles.count}}
+    <!-- <ul> -->
+      <div class="ui link cards stackable scrollview">
+      {{#each file in uploadedFiles.each}}
+
+        <div class="card">
+
+
+          <a href="{{file.link}}?download=false"  target="_blank" class="image cv-preview">
+            <!-- <img src="/images/avatar2/large/matthew.png"> -->
+            {{img file.link}}
+          </a>
+
+          <!-- <div class="content">
+            <div class="header">Matt Giampietro</div>
+            <div class="meta">
+              <a>Friends</a>
+            </div>
+            <div class="description">
+              Matthew is an interior designer living in New York.
+            </div>
+          </div> -->
+          <div class="extra content">
+            <span class="right floated">
+              <div class="ui icon buttons">
+                <a class="ui icon button" href="{{file.link}}?download=true"  target="_blank"><i class="download icon"></i></a>
+                <a class="ui icon button" href="{{file.link}}?download=false"  target="_blank"><i class="desktop icon"></i></a>
+              </div>
+            </span>
+            <span>
+              <i class="file pdf outline icon large"></i>
+
+            </span>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- <li>
+          <a href="{{file.link}}?download=false" target="_blank" >{{file.name}}</a>
+          <div id="imgpdf">
+
+          </div> -->
+          <!-- download="{{file.name}}" -->
+        <!-- </li> -->
+      {{/each}}
+    </div>
+    <!-- </ul> -->
+  {{else}}
+    <div>Pas de CV déposé</div>
+  {{/if}}
+</template>
+
+<template name="RemoveAllfiles">
+  <a id="deleteAllFiles" class="">Remove all</a>
+</template>
